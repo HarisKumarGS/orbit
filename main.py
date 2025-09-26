@@ -4,6 +4,7 @@ import logging
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from src.app.core.config import settings
+from src.app.api.routes.document import router as document_router
 
 # Configure logging
 logging.basicConfig(
@@ -24,6 +25,9 @@ app.add_middleware(
     allow_methods=["*"],  # Allows all methods
     allow_headers=["*"],  # Allows all headers
 )
+
+# Include API routes
+app.include_router(document_router, prefix=settings.API_PREFIX)
 
 @app.get("/health")
 def health_check():

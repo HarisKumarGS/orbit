@@ -13,6 +13,11 @@ class Settings(BaseSettings):
     # AWS S3 settings
     AWS_S3_BUCKET_NAME: str = os.getenv("AWS_S3_BUCKET_NAME", "document-processing-bucket")
     
+    # Database settings
+    DATABASE_URL: str = os.getenv("DATABASE_URL", "postgresql://postgres:postgres@localhost:5432/document_db")
+
+    OCR_AGENT: str = os.getenv("OCR_AGENT", "unstructured.partition.utils.ocr_models.tesseract_ocr.OCRAgentTesseract")
+    
     # API settings
     API_PREFIX: str = "/api/v1"
     
